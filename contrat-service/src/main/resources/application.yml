@@ -1,0 +1,29 @@
+server:
+  port: 9001
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+eureka:
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+
+hystrix:
+  requestLog:
+    enabled: true
+  stream:
+    maxConcurrentConnections: 20
+
+health:
+  hystrix:
+    enabled : true

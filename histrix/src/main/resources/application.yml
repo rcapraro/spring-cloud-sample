@@ -1,0 +1,17 @@
+server:
+  port: 7979
+
+info:
+  component: Hystrix Dashboard
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+
