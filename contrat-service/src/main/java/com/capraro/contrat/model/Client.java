@@ -1,16 +1,16 @@
 package com.capraro.contrat.model;
 
-import lombok.Builder;
-import lombok.Data;
-
-import java.util.Date;
+import lombok.*;
 
 /**
  * Classe représentant le client d'un contrat.
  * Created by Richard Capraro on 07/08/2015.
  */
-@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Client {
 
     private Long id;
@@ -21,7 +21,7 @@ public class Client {
 
     private String prenom;
 
-    private Date dateNaissance;
+    private String dateNaissance;
 
     private String adresse;
 }

@@ -17,4 +17,11 @@ public interface ContratRepository {
      */
     List<Contrat> getContrats();
 
+    /**
+     * Returns a contrat.
+     *
+     * @return a contrat.
+     */
+    Contrat getContrat();
+
 }

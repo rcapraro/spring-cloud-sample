@@ -1,14 +1,16 @@
 package com.capraro.contrat.model;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 /**
  * Classe représentant le risque du contrat.
  * Created by Richard Capraro on 07/08/2015.
  */
-@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Risque {
 
     private Long id;

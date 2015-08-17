@@ -38,7 +38,7 @@ public class ContratController {
         log.info("Appel de /contrats/{id]");
         Sinistre sinistre = sinistreIntegration.getSinistre(id);
         log.info("Sinistre récupéré");
-        Contrat contrat = Contrat.builder().id(id).build();
+        Contrat contrat = contratRepository.getContrat();
         contrat.setSinistres(Arrays.asList(sinistre));
         return contrat;
     }

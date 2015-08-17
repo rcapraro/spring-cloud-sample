@@ -2,7 +2,6 @@ package com.capraro.contrat.model;
 
 import lombok.*;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,9 +19,9 @@ public class Contrat {
 
     private String numero;
 
-    private Date DateCreation;
+    private String dateCreation;
 
-    private Date DateEffet;
+    private String dateEffet;
 
     private Produit produit;
 

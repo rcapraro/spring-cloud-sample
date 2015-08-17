@@ -3,7 +3,6 @@ package com.capraro.contrat.model;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * Réprésente un sinistre d'assurance simplifié.
@@ -20,7 +19,7 @@ public class Sinistre {
 
     private String numeroSinistre;
 
-    private Date dateSurvenance;
+    private String dateSurvenance;
 
     private BigDecimal montant;
 
