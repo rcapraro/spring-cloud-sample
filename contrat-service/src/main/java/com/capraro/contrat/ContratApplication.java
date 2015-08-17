@@ -1,5 +1,6 @@
 package com.capraro.contrat;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -13,10 +14,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCircuitBreaker
-@EnableWebMvc
 public class ContratApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(ContratApplication.class).web(true).run(args);
+        SpringApplication.run(ContratApplication.class, args);
     }
 }

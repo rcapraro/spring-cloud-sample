@@ -22,6 +22,7 @@
         <module>contrat-service</module>
         <module>sinistre-service</module>
         <module>hystrix-dashboard</module>
+        <module>zuul</module>
     </modules>
 
     <properties>

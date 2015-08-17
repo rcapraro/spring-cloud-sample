@@ -1,0 +1,18 @@
+info:
+  component: Zuul Server
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+zuul:
+  routes:
+    contrat-service: /contrat-service/**
+    sinistre-service: /sinistre-service/**
+
+server:
+  port: 8765

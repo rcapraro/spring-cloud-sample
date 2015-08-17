@@ -1,11 +1,6 @@
 server:
   port: 9011
 
-logging:
-  level:
-    ROOT: INFO
-    org.springframework.web: DEBUG
-
 endpoints:
   restart:
     enabled: true

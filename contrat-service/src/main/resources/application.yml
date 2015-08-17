@@ -18,12 +18,6 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
 
-hystrix:
-  requestLog:
-    enabled: true
-  stream:
-    maxConcurrentConnections: 20
-
 health:
   hystrix:
     enabled : true
