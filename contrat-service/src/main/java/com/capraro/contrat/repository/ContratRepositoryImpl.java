@@ -32,8 +32,6 @@ public class ContratRepositoryImpl implements ContratRepository {
 
         List<Contrat> contrats = new ArrayList<>();
 
-        Populator populator = new PopulatorBuilder().build();
-
         for (int i = 0; i < 10; i++) {
             contrats.add(POPULATOR.populateBean(Contrat.class));
         }
