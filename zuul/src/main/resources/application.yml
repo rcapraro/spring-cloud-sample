@@ -13,6 +13,7 @@ zuul:
   routes:
     contrat-service: /contrat-service/**
     sinistre-service: /sinistre-service/**
+    tiers-service: /tiers-service/**
 
 server:
   port: 8765
