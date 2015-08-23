@@ -1,0 +1,23 @@
+server:
+  port: 9021
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+eureka:
+  tiers:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+
+health:
+  hystrix:
+    enabled : true

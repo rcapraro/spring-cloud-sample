@@ -1,0 +1,34 @@
+package com.capraro.tiers.controller;
+
+import com.capraro.tiers.model.Adresse;
+import com.capraro.tiers.model.Tiers;
+import com.capraro.tiers.repository.TiersRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Controller tiers.
+ * Created by Richard Capraro on 07/08/2015.
+ */
+@RestController
+@Slf4j
+public class TiersController {
+
+    @Autowired
+    private TiersRepository tiersRepository;
+
+    @RequestMapping(value = "/tiers", method = RequestMethod.GET)
+    public Iterable<Tiers> sinistres() {
+        return tiersRepository.getTiers();
+    }
+
+    @RequestMapping(value = "/tiers/{id}", method = RequestMethod.GET)
+    public Tiers sinistre(@PathVariable Long id) {
+        log.info("Appel de GET tiers avec id:{}", id);
+        return new Tiers(1L, "123", "Capraro", "Richard", "10/10/1974", new Adresse("Nimes", "4 rue Scatisse"));
+    }
+}

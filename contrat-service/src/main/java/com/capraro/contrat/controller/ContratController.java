@@ -1,8 +1,7 @@
 package com.capraro.contrat.controller;
 
-import com.capraro.contrat.integration.SinistreIntegration;
+import com.capraro.contrat.integration.CompositeIntegration;
 import com.capraro.contrat.model.Contrat;
-import com.capraro.contrat.model.Sinistre;
 import com.capraro.contrat.repository.ContratRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.async.DeferredResult;
+import rx.Observable;
+import rx.Observer;
 
 import java.util.Arrays;
 
@@ -25,7 +27,7 @@ public class ContratController {
     private ContratRepository contratRepository;
 
     @Autowired
-    private SinistreIntegration sinistreIntegration;
+    private CompositeIntegration compositeIntegration;
 
     @RequestMapping(value = "/contrats", method = RequestMethod.GET)
     public Iterable<Contrat> contrats() {
@@ -34,12 +36,46 @@ public class ContratController {
 
 
     @RequestMapping(value = "/contrats/{id}", method = RequestMethod.GET)
-    public Contrat contrat(@PathVariable Long id) {
+    public DeferredResult<Contrat> contrat(@PathVariable Long id) {
         log.info("Appel de /contrats/{id]");
-        Sinistre sinistre = sinistreIntegration.getSinistre(id);
-        log.info("Sinistre récupéré");
-        Contrat contrat = contratRepository.getContrat();
-        contrat.setSinistres(Arrays.asList(sinistre));
-        return contrat;
+
+        Observable<Contrat> contratWithDetails = getContratWithDetails(id);
+        return toDeferredResult(contratWithDetails);
     }
+
+
+    private Observable<Contrat> getContratWithDetails(long id) {
+
+        Contrat contrat = contratRepository.getContrat();
+
+        return Observable.zip(
+                compositeIntegration.getSinistre(id),
+                compositeIntegration.getTiers(id),
+                (sinistre, tiers) -> {
+                    contrat.setSinistres(Arrays.asList(sinistre));
+                    contrat.setTiers(tiers);
+                    return contrat;
+                }
+        );
+    }
+
+    public DeferredResult<Contrat> toDeferredResult(Observable<Contrat> contratWithDetails) {
+        DeferredResult<Contrat> result = new DeferredResult<>();
+        contratWithDetails.subscribe(new Observer<Contrat>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+            }
+
+            @Override
+            public void onNext(Contrat contrat) {
+                result.setResult(contrat);
+            }
+        });
+        return result;
+    }
+
 }

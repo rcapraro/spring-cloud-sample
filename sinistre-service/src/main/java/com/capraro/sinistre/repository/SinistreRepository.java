@@ -17,4 +17,10 @@ public interface SinistreRepository {
      */
     List<Sinistre> getSinistres();
 
+    /**
+     * Returns a Sinistre.
+     *
+     * @return a sinistre
+     */
+    Sinistre getSinistre();
 }

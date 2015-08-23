@@ -1,7 +1,6 @@
 package com.capraro.sinistre.model;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -9,8 +8,11 @@ import java.math.BigDecimal;
  * Réprésente un sinistre d'assurance simplifié.
  * Created by Richard Capraro on 07/08/2015.
  */
-@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Sinistre {
 
     private Long id;

@@ -10,7 +10,7 @@ endpoints:
     sensitive: false
 
 eureka:
-  client:
+  tiers:
     registryFetchIntervalSeconds: 5
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/

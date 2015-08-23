@@ -3,6 +3,6 @@ spring:
     name: hystrix-dashboard
 
 eureka:
-  client:
+  tiers:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/

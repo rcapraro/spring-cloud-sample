@@ -17,5 +17,5 @@ public class Risque {
 
     private String designation;
 
-    private String adresse;
+    private Adresse adresse;
 }

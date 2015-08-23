@@ -36,7 +36,7 @@
                         </dependency>
                         <dependency>
                             <groupId>com.netflix.eureka</groupId>
-                            <artifactId>eureka-client</artifactId>
+                            <artifactId>eureka-tiers</artifactId>
                         </dependency>
                     </requiresUnpack>
                 </configuration>

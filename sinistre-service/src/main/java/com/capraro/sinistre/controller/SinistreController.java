@@ -28,6 +28,6 @@ public class SinistreController {
     @RequestMapping(value = "/sinistres/{id}", method = RequestMethod.GET)
     public Sinistre sinistre(@PathVariable Long id) {
         log.info("Appel de GET sinistre avec id:{}", id);
-        return Sinistre.builder().id(id).build();
+        return sinistreRepository.getSinistre();
     }
 }

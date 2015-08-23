@@ -25,7 +25,7 @@ public class Contrat {
 
     private Produit produit;
 
-    private Client client;
+    private Tiers tiers;
 
     private Risque risque;
 

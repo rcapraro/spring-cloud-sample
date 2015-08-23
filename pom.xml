@@ -23,6 +23,7 @@
         <module>sinistre-service</module>
         <module>hystrix-dashboard</module>
         <module>zuul</module>
+        <module>tiers-service</module>
     </modules>
 
     <properties>
