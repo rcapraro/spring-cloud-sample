@@ -2,7 +2,7 @@
 
 This is very simple set of microservices made with **Spring boot** and **Spring cloud**
 
-* Eureka
+* Eureka with peer awareness
 * Hystrix commands
 * Hystrix Dashboard
 * A service (contrat-service) aggregating results of two other services with Spring Rest template, asynchronously with RxJava observables.
