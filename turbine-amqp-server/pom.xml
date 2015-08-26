@@ -10,24 +10,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>contrat-service</artifactId>
+    <artifactId>turbine-amqp-server</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-starter-turbine-amqp</artifactId>
         </dependency>
+        <!-- force turbine-core version 2.0.0-DP.2 - cf. https://github.com/spring-cloud-samples/turbine/issues/3 -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-hystrix</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-turbine</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-netflix-hystrix-amqp</artifactId>
+            <groupId>com.netflix.turbine</groupId>
+            <artifactId>turbine-core</artifactId>
+            <version>2.0.0-DP.2</version>
         </dependency>
     </dependencies>
+
 </project>

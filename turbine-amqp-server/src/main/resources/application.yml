@@ -1,0 +1,16 @@
+server:
+  port: 7979
+
+info:
+  component: Hystrix Dashboard
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+turbine:
+  aggregator:
+    clusterConfig: CONTRAT-SERVICE
+  appConfig: contrat-service
