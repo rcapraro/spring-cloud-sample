@@ -23,7 +23,7 @@ public class CompositeIntegration {
     private RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod = "defaultSinistre", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500"),
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"),
             @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "3000")
     })
@@ -37,7 +37,7 @@ public class CompositeIntegration {
     }
 
     @HystrixCommand(fallbackMethod = "defaultTiers", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500"),
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5"),
             @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "3000")
     })

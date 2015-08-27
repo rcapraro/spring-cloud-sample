@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 import rx.Observable;
-import rx.Observer;
 
 import java.util.Arrays;
 
@@ -61,20 +60,7 @@ public class ContratController {
 
     public DeferredResult<Contrat> toDeferredResult(Observable<Contrat> contratWithDetails) {
         DeferredResult<Contrat> result = new DeferredResult<>();
-        contratWithDetails.subscribe(new Observer<Contrat>() {
-            @Override
-            public void onCompleted() {
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-            }
-
-            @Override
-            public void onNext(Contrat contrat) {
-                result.setResult(contrat);
-            }
-        });
+        contratWithDetails.subscribe(contrat -> result.setResult(contrat));
         return result;
     }
 
