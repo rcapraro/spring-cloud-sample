@@ -9,5 +9,11 @@ This is very simple set of microservices made with **Spring boot** and **Spring 
 * Client load balancing with Ribbon
 * Zuul proxy server
 * (TODO) Config server
+* OAuth2 server (WIP)
 
 Start all services, you should then be able to view json content from <http://localhost:8765/contrat-service>, <http://localhost:8765/tiers-service> and <http://localhost:8765/sinistre-service> which are configured in application.yml as Zuul proxy routes.
+
+How to get a password grant with the OAuth server:
+`
+http POST acme:acmesecret@localhost:8181/uaa/oauth/token grant_type=password client_id=acme scope=openid username=user password=password --form
+`

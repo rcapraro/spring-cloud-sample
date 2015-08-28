@@ -25,6 +25,7 @@
         <module>zuul</module>
         <module>tiers-service</module>
         <module>turbine-amqp-server</module>
+        <module>auth-server</module>
     </modules>
 
     <properties>

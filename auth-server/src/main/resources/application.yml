@@ -1,0 +1,16 @@
+server:
+  port: 8181
+  contextPath: /uaa
+
+security:
+  user:
+    password: password
+
+info:
+  component: Auth server
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
