@@ -2,13 +2,11 @@ package com.capraro.contrat.controller;
 
 import com.capraro.contrat.integration.CompositeIntegration;
 import com.capraro.contrat.model.Contrat;
+import com.capraro.contrat.model.TypeSinistre;
 import com.capraro.contrat.repository.ContratRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.DeferredResult;
 import rx.Observable;
 
@@ -35,15 +33,14 @@ public class ContratController {
 
 
     @RequestMapping(value = "/contrats/{id}", method = RequestMethod.GET)
-    public DeferredResult<Contrat> contrat(@PathVariable Long id) {
+    public DeferredResult<Contrat> contrat(@PathVariable Long id, @RequestParam(required = false, defaultValue = "MATERIEL") TypeSinistre typeSinistre) {
         log.info("Appel de /contrats/{id]");
 
-        Observable<Contrat> contratWithDetails = getContratWithDetails(id);
+        Observable<Contrat> contratWithDetails = getContratWithDetails(id, typeSinistre);
         return toDeferredResult(contratWithDetails);
     }
 
-
-    private Observable<Contrat> getContratWithDetails(long id) {
+    private Observable<Contrat> getContratWithDetails(long id, TypeSinistre typeSinistre) {
 
         Contrat contrat = contratRepository.getContrat();
 

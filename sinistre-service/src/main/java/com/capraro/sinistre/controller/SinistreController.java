@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.async.DeferredResult;
 
 /**
- * Controller sinsitre.
+ * Controller sinistre.
  * Created by Richard Capraro on 07/08/2015.
  */
 @RestController
@@ -26,8 +27,15 @@ public class SinistreController {
     }
 
     @RequestMapping(value = "/sinistres/{id}", method = RequestMethod.GET)
-    public Sinistre sinistre(@PathVariable Long id) {
+    public DeferredResult<Sinistre> sinistre(@PathVariable Long id) {
         log.info("Appel de GET sinistre avec id:{}", id);
-        return sinistreRepository.getSinistre();
+        DeferredResult<Sinistre> result = new DeferredResult<>();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        result.setResult(sinistreRepository.getSinistre());
+        return result;
     }
 }

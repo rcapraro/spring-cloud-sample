@@ -13,11 +13,10 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Angel.SR3</version>
+        <version>Angel.SR6</version>
     </parent>
 
     <modules>
-        <module>config-server</module>
         <module>eureka</module>
         <module>contrat-service</module>
         <module>sinistre-service</module>
@@ -25,7 +24,6 @@
         <module>zuul</module>
         <module>tiers-service</module>
         <module>turbine-amqp-server</module>
-        <module>auth-server</module>
     </modules>
 
     <properties>
@@ -59,7 +57,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.4</version>
+            <version>1.16.8</version>
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>

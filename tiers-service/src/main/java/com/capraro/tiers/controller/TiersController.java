@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.async.DeferredResult;
 
 /**
  * Controller tiers.
@@ -27,8 +28,15 @@ public class TiersController {
     }
 
     @RequestMapping(value = "/tiers/{id}", method = RequestMethod.GET)
-    public Tiers sinistre(@PathVariable Long id) {
+    public DeferredResult<Tiers> sinistre(@PathVariable Long id) {
         log.info("Appel de GET tiers avec id:{}", id);
-        return new Tiers(1L, "123", "Capraro", "Richard", "10/10/1974", new Adresse("Nimes", "4 rue Scatisse"));
+        DeferredResult<Tiers> result = new DeferredResult<>();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        result.setResult(new Tiers(1L, "123", "Capraro", "Richard", "10/10/1974", new Adresse("Nimes", "4 rue Scatisse")));
+        return result;
     }
 }
